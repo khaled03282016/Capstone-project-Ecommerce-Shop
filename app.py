@@ -7,7 +7,7 @@ from flask_mail import Mail, Message
 
 app = Flask(__name__)
 app.secret_key = 'khaledeCommerce'
-# CORS(app)
+CORS(app)
 
 # cors=CORS(app)
 mail= Mail(app)
@@ -559,7 +559,6 @@ def delete_iamge(Id, image_order):
      return jsonify({'result': output})
 
 @app.route('/management/admin-auth/session', methods=["Post"])
-@cors_origin()
 def logged_in():
      admins = mongo.db.admins
      username = request.json['user_name']
@@ -575,7 +574,6 @@ def logged_in():
 
 
 @app.route('/management/get_login_status/', methods=["GET"])
-@cors_origin()
 def get_login_status():
       
       if 'status'  in session:
