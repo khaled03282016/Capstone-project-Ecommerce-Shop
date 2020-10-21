@@ -23,11 +23,11 @@ app.config ["MONGO_DBNAME"] = "eCommerce_shop"
 app.config["MONGO_URI"] = "mongodb+srv://khaled:sabrina03282016@cluster0.7kuww.mongodb.net/eCommerce_shop?retryWrites=true&w=majority"
 mongo = PyMongo(app)
 
-@app.after_request
-def middleware_for_response(response):
-    # Allowing the credentials in the response.
-    response.headers.add('Access-Control-Allow-Credentials', 'true')
-    return response
+# @app.after_request
+# def middleware_for_response(response):
+#     # Allowing the credentials in the response.
+#     response.headers.add('Access-Control-Allow-Credentials', 'true')
+#     return response
 
 
 @app.route('/product/<filename>')
@@ -40,7 +40,7 @@ def get(filename):
 def get_url(image, filename, product):
      if len(product[image])>0 :
           image_url = url_for('get',  filename = product[image])
-          return "http://localhost:5000"+image_url
+          return "https://kcom-ecommerce-shop-api.herokuapp.com"+image_url
      else :
           a=''
      return a
