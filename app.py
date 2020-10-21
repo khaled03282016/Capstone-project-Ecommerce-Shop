@@ -8,7 +8,6 @@ from flask_mail import Mail, Message
 app = Flask(__name__)
 app.secret_key = 'khaledeCommerce'
 
-
 cors=CORS(app)
 mail= Mail(app)
 
