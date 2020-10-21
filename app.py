@@ -37,8 +37,6 @@ def get(filename):
 
 
 
-
-
 def get_url(image, filename, product):
      if len(product[image])>0 :
           image_url = url_for('get',  filename = product[image])
