@@ -7,8 +7,9 @@ from flask_mail import Mail, Message
 
 app = Flask(__name__)
 app.secret_key = 'khaledeCommerce'
+CORS(app)
 
-cors=CORS(app)
+# cors=CORS(app)
 mail= Mail(app)
 
 app.config['MAIL_SERVER']='smtp.gmail.com'
@@ -25,17 +26,17 @@ mongo = PyMongo(app)
 
 
 
-@app.route('/')
-def home_page():
-     return f'''
-     <h1>HELLO</h1>
-     '''
+# @app.route('/')
+# def home_page():
+#      return f'''
+#      <h1>HELLO</h1>
+#      '''
 
-@app.after_request
-def middleware_for_response(response):
-    # Allowing the credentials in the response.
-    response.headers.add('Access-Control-Allow-Credentials', 'true')
-    return response
+# @app.after_request
+# def middleware_for_response(response):
+#     # Allowing the credentials in the response.
+#     response.headers.add('Access-Control-Allow-Credentials', 'true')
+#     return response
 
 
 @app.route('/product/<filename>')
