@@ -21,7 +21,7 @@ app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
 
 app.config ["MONGO_DBNAME"] = "eCommerce_shop"
-app.config["MONGO_URL"] = "mongodb+srv://khaled:sabrina03282016@cluster0.7kuww.mongodb.net/eCommerce_shop?retryWrites=true&w=majority"
+app.config["MONGO_URI"] = "mongodb+srv://khaled:sabrina03282016@cluster0.7kuww.mongodb.net/eCommerce_shop?retryWrites=true&w=majority"
 mongo = PyMongo(app)
 
 
