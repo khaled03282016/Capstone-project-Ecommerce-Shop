@@ -8,6 +8,11 @@ from flask_mail import Mail, Message
 app = Flask(__name__)
 app.secret_key = 'khaledeCommerce'
 CORS(app)
+cors = CORS(app, resources={
+     r"/*": {
+          "origins": "*"
+     }
+})
 
 # cors=CORS(app)
 mail= Mail(app)
