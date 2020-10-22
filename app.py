@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, url_for, session, escape
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId 
 from datetime import datetime
@@ -7,12 +7,7 @@ from flask_mail import Mail, Message
 
 app = Flask(__name__)
 app.secret_key = 'khaledeCommerce'
-cors = CORS(app, resources={
-     r"/*": {
-          "origins": "https://kcom-ecommerce-front-end.herokuapp.com"
-     }
-})
-app.config['CORS_HEADERS'] = 'Content-Type'
+CORS(app)
 
 # cors=CORS(app)
 mail= Mail(app)
@@ -564,7 +559,6 @@ def delete_iamge(Id, image_order):
      return jsonify({'result': output})
 
 @app.route('/management/admin-auth/session', methods=["Post"])
-@cross_origin(origin='*',headers=['Content-Type','Authorization'])
 def logged_in():
      admins = mongo.db.admins
      username = request.json['user_name']
@@ -576,11 +570,12 @@ def logged_in():
      else:
            output='not found'         
                
-     return jsonify({'result': output})
+     response = jsonify({'result': output})
+     response.headers.add('Access-Control-Allow-Origin', '*')
+     return response
 
 
 @app.route('/management/get_login_status/', methods=["GET"])
-@cross_origin(origin='*',headers=['Content-Type','Authorization'])
 def get_login_status():
       
       if 'status'  in session:
@@ -588,7 +583,9 @@ def get_login_status():
       else :
             status = False
      
-      return jsonify({'result': status})
+     response = jsonify({'result': status})
+     response.headers.add('Access-Control-Allow-Origin', '*')
+     return response
 
 
 @app.route('/management/admin-auth/logout/', methods=["DELETE"])
