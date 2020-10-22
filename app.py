@@ -583,9 +583,9 @@ def get_login_status():
       else :
             status = False
      
-     response = jsonify({'result': status})
-     response.headers.add('Access-Control-Allow-Origin', '*')
-     return response
+      response = jsonify({'result': status})
+      response.headers.add('Access-Control-Allow-Origin', '*')
+      return response
 
 
 @app.route('/management/admin-auth/logout/', methods=["DELETE"])
