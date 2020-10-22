@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, url_for, session, escape
-from flask_cors import CORS, cors_origin
+from flask_cors import CORS
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId 
 from datetime import datetime
