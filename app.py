@@ -571,7 +571,7 @@ def logged_in():
            output='not found'         
                
      response = jsonify({'result': output})
-     response.headers.add('Access-Control-Allow-Origin', '*')
+     response.headers.add('Access-Control-Allow-Origin', 'https://kcom-ecommerce-front-end.herokuapp.com/')
      return response
 
 
@@ -584,7 +584,7 @@ def get_login_status():
             status = False
      
       response = jsonify({'result': status})
-      response.headers.add('Access-Control-Allow-Origin', '*')
+      response.headers.add('Access-Control-Allow-Origin', 'https://kcom-ecommerce-front-end.herokuapp.com/')
       return response
 
 
