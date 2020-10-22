@@ -58,7 +58,7 @@ def get_url(image, filename, product):
 
 
 
-# Endpoint to get lists of production new book
+
 @app.route('/get', methods=["GET"])
 def get_products ():
      products = mongo.db.products
