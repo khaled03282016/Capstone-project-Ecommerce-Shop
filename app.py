@@ -1,3 +1,4 @@
+import smtplib
 from flask import Flask, request, jsonify, url_for, session, escape
 from flask_cors import CORS
 from flask_pymongo import PyMongo
