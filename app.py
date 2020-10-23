@@ -683,29 +683,39 @@ def signup_client():
 
 
 
-@app.route('/shop/cart', methods = ["POST"])
+@app.route('/shop/cart', methods = ["POST", "GET"])
 def cart_session():
      product_id = request.json['id']
      size = request.json['size']
      quantity = request.json['quantity']
      price = request.json['price']
-
-     if 'cart_shop' in session:
+     if request.method=="POST":
+          if 'cart_shop' in session:
+               
+               session['cart_shop'] = {'cart': session['cart_shop']['cart'] + [{'product_id': product_id,
+                              'size': size,
+                              'quantity': quantity,
+                              'price': price}], 'total': session['cart_shop']['total'] + price}
+               output= session['cart_shop']
+          else: 
+               session['cart_shop'] = {'cart':[{'product_id': product_id,
+                              'size': size,
+                              'quantity': quantity,
+                              'price': price}], 'total':price}
+               output = session['cart_shop']
           
-          session['cart_shop'] = {'cart': session['cart_shop']['cart'] + [{'product_id': product_id,
-                         'size': size,
-                         'quantity': quantity,
-                         'price': price}], 'total': session['cart_shop']['total'] + price}
-          output= session['cart_shop']
-     else: 
-          session['cart_shop'] = {'cart':[{'product_id': product_id,
-                         'size': size,
-                         'quantity': quantity,
-                         'price': price}], 'total':price}
-          output = session['cart_shop']
-     
 
-     return jsonify({'result': output})
+          return jsonify({'result': output})
+
+     else : 
+          if 'cart_shop' in session:
+               output = session['cart_shop']
+          else:
+               output = 'not found'
+
+     
+          return jsonify({'result': output})
+
 
 
 @app.route('/shop/cart/delete_guest_cart_shop/<product_id>', methods= ['DELETE'])
