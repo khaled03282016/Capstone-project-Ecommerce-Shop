@@ -708,10 +708,9 @@ def cart_session():
           return jsonify({'result': output})
 
      else : 
-          if 'cart_shop' in session:
-               output = session['cart_shop']
-          else:
-               output = 'not found'
+          
+          output = session['cart_shop']
+          
 
      
           return jsonify({'result': output})
