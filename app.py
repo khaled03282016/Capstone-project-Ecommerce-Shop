@@ -6,7 +6,7 @@ from datetime import datetime
 from flask_mail import Mail, Message
 
 app = Flask(__name__)
-app.secret_key = 'khaledeCommerce'
+app.secret_key = 'aaaaaaaAAAAAAAA!'
 CORS(app)
 
 # cors=CORS(app)
