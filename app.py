@@ -6,10 +6,9 @@ from datetime import datetime
 from flask_mail import Mail, Message
 
 app = Flask(__name__)
-app.secret_key = 'aaaaaaaAAAAAAAA!'
-CORS(app)
+app.secret_key = 'sabrina2020'
 
-# cors=CORS(app)
+cors=CORS(app)
 mail= Mail(app)
 
 app.config['MAIL_SERVER']='smtp.gmail.com'
