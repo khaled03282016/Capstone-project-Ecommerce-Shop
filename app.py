@@ -14,8 +14,8 @@ mail= Mail(app)
 
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'ecommercekcom@gmail.com'
-app.config['MAIL_PASSWORD'] = 'khaled03282016'
+app.config['MAIL_USERNAME'] = 'kcomecommerce@gmail.com'
+app.config['MAIL_PASSWORD'] = 'sabrina2018'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
@@ -859,7 +859,7 @@ def post_orders():
                    f'Size.{size}': int(size_to_update) - int(order['quantity'])
                }
           })
-     msg = Message(f'Thank You for Your Order({new_order_id})', sender = 'ecommercekcom@gmail.com', recipients = [guest_email])
+     msg = Message(f'Thank You for Your Order({new_order_id})', sender = 'kcomecommerce@gmail.com', recipients = [guest_email])
      msg.body = f'''
      Shipping to: {new_order["shipping_adress"]["name"]} {new_order["shipping_adress"]["last_name"]}
      {new_order["shipping_adress"]["street"]},{new_order["shipping_adress"]["city"]},{new_order["shipping_adress"]["state"]},{new_order["shipping_adress"]["zipcode"]}
