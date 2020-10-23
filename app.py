@@ -685,11 +685,11 @@ def signup_client():
 
 @app.route('/shop/cart', methods = ["POST", "GET"])
 def cart_session():
-     product_id = request.json['id']
-     size = request.json['size']
-     quantity = request.json['quantity']
-     price = request.json['price']
      if request.method=="POST":
+          product_id = request.json['id']
+          size = request.json['size']
+          quantity = request.json['quantity']
+          price = request.json['price']
           if 'cart_shop' in session:
                
                session['cart_shop'] = {'cart': session['cart_shop']['cart'] + [{'product_id': product_id,
