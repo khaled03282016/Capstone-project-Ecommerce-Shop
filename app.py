@@ -570,9 +570,8 @@ def logged_in():
      else:
            output='not found'         
                
-     response = jsonify({'result': output})
-     response.headers.add('Access-Control-Allow-Origin', 'https://kcom-ecommerce-front-end.herokuapp.com/')
-     return response
+    
+     return jsonify({'result': output})
 
 
 @app.route('/management/get_login_status/', methods=["GET"])
@@ -583,9 +582,8 @@ def get_login_status():
       else :
             status = False
      
-      response = jsonify({'result': status})
-      response.headers.add('Access-Control-Allow-Origin', 'https://kcom-ecommerce-front-end.herokuapp.com/')
-      return response
+      
+      return jsonify({'result': status})
 
 
 @app.route('/management/admin-auth/logout/', methods=["DELETE"])
