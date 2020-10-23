@@ -32,11 +32,11 @@ mongo = PyMongo(app)
 #      <h1>HELLO</h1>
 #      '''
 
-# @app.after_request
-# def middleware_for_response(response):
-#     # Allowing the credentials in the response.
-#     response.headers.add('Access-Control-Allow-Credentials', 'true')
-#     return response
+@app.after_request
+def middleware_for_response(response):
+    # Allowing the credentials in the response.
+    response.headers.add('Access-Control-Allow-Credentials', 'true')
+    return response
 
 
 @app.route('/product/<filename>')
