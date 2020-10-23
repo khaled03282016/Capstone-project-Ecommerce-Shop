@@ -674,7 +674,7 @@ def signup_client():
           })
      member = members.find_one({'_id': member_id})
      output = client_output(member)
-     msg = Message('Welcom To Kcom.com', sender = 'ecommercekcom@gmail.com', recipients = [member['_id']])
+     msg = Message('Welcom To Kcom.com', sender = 'kcomecommerce@gmail.com', recipients = [member['_id']])
      msg.body = f'''{name} {last_name}, Thank You for your subscription.'''
      mail.send(msg)
 
