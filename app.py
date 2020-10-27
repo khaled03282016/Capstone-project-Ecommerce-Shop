@@ -557,7 +557,7 @@ def delete_iamge(Id, image_order):
     
      return jsonify({'result': output})
 
-@app.route('/management/admin-auth/session', methods=["GET"])
+@app.route('/management/admin-auth/session', methods=["POST"])
 def logged_in():
      admins = mongo.db.admins
      username = request.json['user_name']
@@ -582,7 +582,7 @@ def get_login_status():
             output = False
      
       
-      return jsonify({'result': output})
+      return jsonify({'result': session})
 
 
 @app.route('/management/admin-auth/logout/', methods=["DELETE"])
