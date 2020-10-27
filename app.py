@@ -1,5 +1,5 @@
 import smtplib
-from flask import Flask, request, jsonify, url_for, session, escape
+from flask import Flask, request, jsonify, url_for, session, escape, redirect
 from flask_cors import CORS
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId 
@@ -567,6 +567,7 @@ def logged_in():
      if admin_id :
           session['status']= 'created'
           output= session['status']
+          return redirect(url_for('get_login_status'))
      else:
            output='not found'         
                
