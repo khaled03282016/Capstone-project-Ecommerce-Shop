@@ -567,7 +567,6 @@ def logged_in():
      if admin_id :
           session['status']= 'created'
           output= session['status']
-          return redirect(url_for('get_login_status'))
      else:
            output='not found'         
                
