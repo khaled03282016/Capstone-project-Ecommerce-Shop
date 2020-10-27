@@ -351,11 +351,10 @@ def delete_product (Id):
     
      products = mongo.db.products
          
-     output= products.remove({'_id': ObjectId(Id)})
+     products.remove({'_id': ObjectId(Id)})
 
 
-    
-     return   jsonify({'result': output})
+     return   jsonify({'result': "done"})
 
 
 def img_update(Id, products, image_0):
