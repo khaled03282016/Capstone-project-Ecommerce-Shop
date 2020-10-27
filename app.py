@@ -582,7 +582,7 @@ def get_login_status():
             output = False
      
       
-      return jsonify({'result': session})
+      return jsonify({'result':  output})
 
 
 @app.route('/management/admin-auth/logout/', methods=["DELETE"])
