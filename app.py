@@ -578,7 +578,7 @@ def logged_in():
 @app.route('/management/get_login_status/', methods=["GET"])
 def get_login_status():
       
-      if 'status'  in session:
+      if session.get('status', None) is not None:
             status = True
       else :
             status = False
