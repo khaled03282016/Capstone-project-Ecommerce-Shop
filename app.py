@@ -576,13 +576,13 @@ def logged_in():
 @app.route('/management/get_login_status/', methods=["GET"])
 def get_login_status():
       
-      if session.get('status', None) is not None:
-            status = True
+      if 'status' in session:
+            output = True
       else :
-            status = False
+            output = False
      
       
-      return jsonify({'result': status})
+      return jsonify({'result': output})
 
 
 @app.route('/management/admin-auth/logout/', methods=["DELETE"])
