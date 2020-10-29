@@ -8,7 +8,6 @@ from flask_mail import Mail, Message
 
 app = Flask(__name__)
 app.secret_key = 'eCommerceShop'
-
 cors=CORS(app)
 mail= Mail(app)
 
@@ -36,8 +35,6 @@ mongo = PyMongo(app)
 def middleware_for_response(response):
     # Allowing the credentials in the response.
     response.headers.add('Access-Control-Allow-Credentials', 'true')
-    response.headers.add('Access-Control-Allow-Origin', 'https://kcom-ecommerce-front-end.herokuapp.com')
-#     response.headers.add('Access-Control-Allow-Headers', '*')
     return response
 
 
