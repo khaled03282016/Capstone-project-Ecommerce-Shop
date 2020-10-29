@@ -1,5 +1,5 @@
 import smtplib
-from flask import Flask, request, jsonify, url_for, session, escape, redirect
+from flask import Flask, request, jsonify, url_for, session, escape, redirect, make_response
 from flask_cors import CORS
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId 
@@ -564,8 +564,9 @@ def logged_in():
      password = request.json['password']
      admin_id = admins.find_one({'user_name': username, 'Password': password})
      if admin_id :
-          session['status']= 'created'
-          output= session['status']
+          resp = make_response('logged_in')
+          resp.set_cookie('status', 'created', max_age=60*60*24*365*2)
+          output = 'created'
      else:
            output='not found'         
                
@@ -576,7 +577,7 @@ def logged_in():
 @app.route('/management/get_login_status/', methods=["GET"])
 def get_login_status():
       
-      if 'status' in session:
+      if  request.cookies.get('status', 'created') is not None:
             output = True
       else :
             output = False
@@ -588,15 +589,17 @@ def get_login_status():
 @app.route('/management/admin-auth/logout/', methods=["DELETE"])
 def delete_admin_session():
       
-     session.pop('status', None)
+     resp = make_response('cookie removed')
+     resp.set_cookie('status', 'removed', max_age=0)
 
+     if  request.cookies.get('status') == 'created':
 
-     if 'status'  in session:
-            status = True
+            output = True
      else :
-            status = False
+            output = False
      
-     return jsonify({'result': status})
+      
+     return jsonify({'result':  output})
 
 
 
