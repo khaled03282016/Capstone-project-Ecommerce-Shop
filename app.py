@@ -577,7 +577,7 @@ def logged_in():
 @app.route('/management/get_login_status/', methods=["GET"])
 def get_login_status():
       
-      if  request.cookies.get('adminLoggedIn', 'created') is not None:
+      if  'adminLoggedIn' in request.cookies:
             output = True
       else :
             output = False
