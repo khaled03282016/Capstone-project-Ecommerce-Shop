@@ -8,7 +8,7 @@ from flask_mail import Mail, Message
 
 app = Flask(__name__)
 app.secret_key = 'eCommerceShop'
-cors=CORS(app)
+cors=CORS(app, headers="Content-Type")
 mail= Mail(app)
 
 app.config['MAIL_SERVER']='smtp.gmail.com'
