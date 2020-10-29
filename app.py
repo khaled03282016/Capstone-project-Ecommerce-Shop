@@ -564,20 +564,19 @@ def logged_in():
      password = request.json['password']
      admin_id = admins.find_one({'user_name': username, 'Password': password})
      if admin_id :
-          resp = make_response('logged_in')
-          resp.set_cookie('adminLoggedIn', 'created')
-     #      output = 'created'
-     # else:
-     #       output='not found'         
+          session['status']= 'created'
+          output = 'created'
+     else:
+           output='not found'         
                
     
-     return jsonify({'result': request.cookies})
+     return jsonify({'result': output})
 
 
 @app.route('/management/get_login_status/', methods=["GET"])
 def get_login_status():
       
-      if  'adminLoggedIn' in request.cookies:
+      if  'status' in session:
             output = True
       else :
             output = False
@@ -589,17 +588,16 @@ def get_login_status():
 @app.route('/management/admin-auth/logout/', methods=["DELETE"])
 def delete_admin_session():
       
-     resp = make_response('cookie removed')
-     resp.set_cookie('status', 'created', max_age=0)
+     session.pop('status', None)
 
-     # if not request.cookies.get('status', 'removed'):
+     if 'status' in session:
 
-     #        output = False
-     # else :
-     #        output = True
+            output = False
+     else :
+            output = True
      
       
-     return jsonify({'result':  False})
+     return jsonify({'result':  output})
 
 
 
