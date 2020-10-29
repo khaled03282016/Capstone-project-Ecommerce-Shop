@@ -8,7 +8,7 @@ from flask_mail import Mail, Message
 
 app = Flask(__name__)
 app.secret_key = 'eCommerceShop'
-cors=CORS(app, headers="Content-Type")
+cors=CORS(app)
 mail= Mail(app)
 
 app.config['MAIL_SERVER']='smtp.gmail.com'
@@ -575,7 +575,7 @@ def logged_in():
 @app.route('/management/get_login_status/', methods=["GET"])
 def get_login_status():
       
-      if  not session.get("status") is None:
+      if  'status' in session:
             output = True
       else :
             output = False
@@ -589,7 +589,7 @@ def delete_admin_session():
       
      session.pop('status', None)
 
-     if not session.get("status") is None:
+     if 'status' in session:
 
             output = True
      else :
