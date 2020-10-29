@@ -566,12 +566,12 @@ def logged_in():
      if admin_id :
           resp = make_response('logged_in')
           resp.set_cookie('adminLoggedIn', 'created')
-          output = 'created'
-     else:
-           output='not found'         
+     #      output = 'created'
+     # else:
+     #       output='not found'         
                
     
-     return jsonify({'result': output})
+     return jsonify({'result': request.cookies})
 
 
 @app.route('/management/get_login_status/', methods=["GET"])
