@@ -590,7 +590,7 @@ def get_login_status():
 def delete_admin_session():
       
      resp = make_response('cookie removed')
-     resp.set_cookie('status', 'removed', max_age=0)
+     resp.set_cookie('status', 'created', max_age=0)
 
      if  request.cookies.get('status') == 'created':
 
