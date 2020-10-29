@@ -9,7 +9,7 @@ from flask_mail import Mail, Message
 app = Flask(__name__)
 app.secret_key = 'eCommerceShop'
 
-cors=CORS(app, supports_credentials=True)
+# cors=CORS(app)
 mail= Mail(app)
 
 app.config['MAIL_SERVER']='smtp.gmail.com'
@@ -33,9 +33,11 @@ mongo = PyMongo(app)
 #      '''
 
 @app.after_request
+# @app.before_request
 def middleware_for_response(response):
     # Allowing the credentials in the response.
     response.headers.add('Access-Control-Allow-Credentials', 'true')
+#     response.headers.add('Access-Control-Allow-Credentials', 'true')
     return response
 
 
