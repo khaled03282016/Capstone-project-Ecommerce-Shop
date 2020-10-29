@@ -577,7 +577,7 @@ def logged_in():
 @app.route('/management/get_login_status/', methods=["GET"])
 def get_login_status():
       
-      if  request.cookies.get('status') == 'created':
+      if  request.cookies.get('status') is not None:
             output = True
       else :
             output = False
@@ -592,11 +592,11 @@ def delete_admin_session():
      resp = make_response('cookie removed')
      resp.set_cookie('status', 'created', max_age=0)
 
-     if  request.cookies.get('status') == 'created':
+     if not request.cookies.get('status'):
 
-            output = True
-     else :
             output = False
+     else :
+            output = True
      
       
      return jsonify({'result':  output})
