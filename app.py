@@ -565,7 +565,7 @@ def logged_in():
      admin_id = admins.find_one({'user_name': username, 'Password': password})
      if admin_id :
           resp = make_response('logged_in')
-          resp.set_cookie('status', 'created', max_age=60*60*24*365*2)
+          resp.set_cookie('adminLoggedIn', 'created')
           output = 'created'
      else:
            output='not found'         
@@ -577,7 +577,7 @@ def logged_in():
 @app.route('/management/get_login_status/', methods=["GET"])
 def get_login_status():
       
-      if  request.cookies.get('status', 'created') is not None:
+      if  request.cookies.get('adminLoggedIn', 'created') is not None:
             output = True
       else :
             output = False
