@@ -37,7 +37,7 @@ def middleware_for_response(response):
     # Allowing the credentials in the response.
     response.headers.add('Access-Control-Allow-Credentials', 'true')
     response.headers.add('Access-Control-Allow-origin', 'https://kcom-ecommerce-front-end.herokuapp.com')
-    response.headers.add('Access-Control-Allow-Headers', 'SET_COOKIES')
+    response.headers.add('Access-Control-Allow-Headers', '*')
     return response
 
 
