@@ -36,8 +36,8 @@ mongo = PyMongo(app)
 def middleware_for_response(response):
     # Allowing the credentials in the response.
     response.headers.add('Access-Control-Allow-Credentials', 'true')
-    response.headers.add('Access-Control-Allow-origin', 'https://kcom-ecommerce-front-end.herokuapp.com')
-    response.headers.add('Access-Control-Allow-Headers', '*')
+    response.headers.add('Access-Control-Allow-Origin', 'https://kcom-ecommerce-front-end.herokuapp.com')
+#     response.headers.add('Access-Control-Allow-Headers', '*')
     return response
 
 
