@@ -590,16 +590,16 @@ def get_login_status():
 def delete_admin_session():
       
      resp = make_response('cookie removed')
-     resp.set_cookie('status', 'removed', max_age=0)
+     resp.set_cookie('status', 'created', max_age=0)
 
-     if not request.cookies.get('status', 'removed'):
+     # if not request.cookies.get('status', 'removed'):
 
-            output = False
-     else :
-            output = True
+     #        output = False
+     # else :
+     #        output = True
      
       
-     return jsonify({'result':  output})
+     return jsonify({'result':  False})
 
 
 
