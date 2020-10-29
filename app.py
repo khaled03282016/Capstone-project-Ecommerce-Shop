@@ -576,7 +576,7 @@ def logged_in():
 @app.route('/management/get_login_status/', methods=["GET"])
 def get_login_status():
       
-      if  'status' in session:
+      if  not session.get("USERNAME") is None:
             output = True
       else :
             output = False
@@ -590,7 +590,7 @@ def delete_admin_session():
       
      session.pop('status', None)
 
-     if 'status' in session:
+     if not session.get("USERNAME") is None:
 
             output = True
      else :
