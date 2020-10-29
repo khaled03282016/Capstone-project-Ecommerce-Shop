@@ -592,9 +592,9 @@ def delete_admin_session():
 
      if 'status' in session:
 
-            output = False
-     else :
             output = True
+     else :
+            output = False
      
       
      return jsonify({'result':  output})
