@@ -576,6 +576,7 @@ def logged_in():
 def get_login_status():
       
       if  'status' in session:
+           
             output = True
       else :
             output = False
