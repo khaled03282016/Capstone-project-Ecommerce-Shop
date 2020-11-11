@@ -31,6 +31,7 @@ mongo = PyMongo(app)
 #      <h1>HELLO</h1>
 #      '''
 
+@app.before_request
 @app.after_request
 def middleware_for_response(response):
     # Allowing the credentials in the response.
