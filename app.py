@@ -8,6 +8,8 @@ from flask_mail import Mail, Message
 
 app = Flask(__name__)
 app.secret_key = 'eCommerceShop'
+app.config['SESSION_COOKIE_HTTPONLY'] = False
+# app.config['SESSION_COOKIE_SECURE'] = True
 cors=CORS(app)
 mail= Mail(app)
 
