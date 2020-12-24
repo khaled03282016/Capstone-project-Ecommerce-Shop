@@ -3,15 +3,16 @@ from flask import Flask, request, jsonify, url_for, session, escape, redirect, m
 from flask_cors import CORS
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId 
-from datetime import datetime
+from datetime import datetime, timedelta
 from flask_mail import Mail, Message
 
 app = Flask(__name__)
-app.secret_key = 'eCommerceShop'
+app.secret_key = 'APISHop'
+app.permanent_session_lifetime = timedelta(minutes=5)
 # app.config['SESSION_COOKIE_HTTPONLY'] = False
 # app.config['SESSION_COOKIE_SAMESITE']='Lax'
 # app.config['SESSION_COOKIE_SECURE'] = True
-cors=CORS(app)
+CORS(app, supports_credentials=True)
 mail= Mail(app)
 
 app.config['MAIL_SERVER']='smtp.gmail.com'
@@ -34,11 +35,11 @@ mongo = PyMongo(app)
 #      <h1>HELLO</h1>
 #      '''
 
-@app.after_request
-def middleware_for_response(response):
-    # Allowing the credentials in the response.
-    response.headers.add('Access-Control-Allow-Credentials', 'true')
-    return response
+# @app.after_request
+# def middleware_for_response(response):
+#     # Allowing the credentials in the response.
+#     response.headers.add('Access-Control-Allow-Credentials', 'true')
+#     return response
 
 
 
@@ -612,7 +613,9 @@ def client_logged_in():
      password = request.json['password']
      member_id = members.find_one({'_id': email.lower(), 'password': password})
      if member_id :
+          session.permanent=True
           session['client_status']= {'status': 'created', 'email': email}
+          print(session)
           output= session['client_status']
      else:
            output='not found'         
